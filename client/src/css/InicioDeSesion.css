@@ -1,0 +1,551 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #2b2b2b 0%, #1a1a1a 80%);
+}
+
+.container {
+    width: 90vw;
+    max-width: 1200px;
+    height: 80vh;
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    color: #fff;
+    background-color: rgba(30, 30, 30, 0.95);
+    z-index: 10;
+    /* Forma elegante con esquinas redondeadas */
+    clip-path: polygon(
+            0 0,
+            calc(100% - 30px) 0,
+            100% 30px,
+            100% calc(100% - 30px),
+            calc(100% - 30px) 100%,
+            0 100%
+    );
+    transition: all 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.image-panel {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url("../assets/cocktail-registro.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.9);
+}
+
+.image-panel:hover {
+    filter: brightness(1.05);
+    transform: scale(1.02);
+    transition: all 0.5s ease;
+}
+
+.container.registering .form-panel {
+    left: 55%;
+    /* Forma elegante con esquinas redondeadas invertida */
+    clip-path: polygon(
+            30px 0,
+            100% 0,
+            100% 100%,
+            30px 100%,
+            0 calc(100% - 30px),
+            0 30px
+    );
+    background-color: rgba(25, 25, 25, 0.95);
+}
+
+.container.registering .image-panel {
+    right: auto;
+    left: 0;
+    width: 60%;
+    background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #e5c07b;
+    margin-bottom: 30px;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.container.transitioning h2 {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #e5c07b, transparent);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.form-group:hover {
+    transform: translateY(-3px);
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #d4d4d4;
+    transition: all 0.3s;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(50, 50, 50, 0.4);
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(229, 192, 123, 0.3);
+    border-color: #e5c07b;
+    transform: translateY(-1px);
+}
+
+.form-group input:hover {
+    background-color: rgba(60, 60, 60, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset;
+}
+
+.btn {
+    margin-top: 30px;
+    padding: 16px;
+    width: 100%;
+    background: linear-gradient(135deg, #e5c07b 0%, #d4af37 100%);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: all 0.6s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.toggle-text {
+    margin-top: 25px;
+    text-align: center;
+    color: #aaa;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.toggle-text span {
+    color: #e5c07b;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    position: relative;
+    padding: 0 2px;
+}
+
+.toggle-text span::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #e5c07b;
+    transition: width 0.3s ease;
+}
+
+.toggle-text span:hover {
+    color: #f7d98c;
+    text-shadow: 0 0 8px rgba(229, 192, 123, 0.3);
+}
+
+.toggle-text span:hover::after {
+    width: 100%;
+}
+
+/* Elementos decorativos adicionales */
+.decorative-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(229,192,123,0.1) 0%, rgba(229,192,123,0) 70%);
+    z-index: 1;
+    transition: all 1s ease;
+}
+
+.circle1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+}
+
+.circle2 {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    right: 30%;
+}
+
+.container.registering .circle1 {
+    transform: scale(1.2) translate(400px, 0);
+}
+
+.container.registering .circle2 {
+    transform: scale(0.8) translate(-400px, 0);
+}
+
+.cocktail-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.15;
+    z-index: 1;
+    transition: all 0.8s ease;
+}
+
+.cocktail-icon:hover {
+    opacity: 0.3;
+    transform: rotate(10deg);
+}
+
+.icon1 {
+    top: 10%;
+    right: 10%;
+}
+
+.icon2 {
+    bottom: 10%;
+    left: 10%;
+}
+
+.container.registering .icon1 {
+    transform: translate(-500px, 0) rotate(-20deg);
+}
+
+.container.registering .icon2 {
+    transform: translate(500px, 0) rotate(20deg);
+}
+
+/* Para el efecto de la línea diagonal brillante */
+.diagonal-line {
+    position: absolute;
+    width: 2px;
+    height: 150%;
+    background: linear-gradient(to bottom, transparent, #e5c07b, transparent);
+    top: -25%;
+    left: 45%;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    opacity: 0.3;
+    transition: all 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+    box-shadow: 0 0 15px rgba(229, 192, 123, 0.5);
+}
+
+.container.registering .diagonal-line {
+    left: 55%;
+    transform: rotate(-45deg);
+    transform-origin: top right;
+    background: linear-gradient(to bottom, transparent, #d4af37, transparent);
+}
+
+/* Añadir formulario de registro */
+.form-fields {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.register-fields {
+    display: none;
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.login-fields {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.container.registering .register-fields {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.container.registering .login-fields {
+    display: none;
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+/* Detalles elegantes adicionales */
+.corner-decoration {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.2;
+    transition: all 0.8s ease;
+}
+
+.corner-top-left {
+    top: 20px;
+    left: 20px;
+    border-top: 2px solid #e5c07b;
+    border-left: 2px solid #e5c07b;
+}
+
+.corner-top-right {
+    top: 20px;
+    right: 20px;
+    border-top: 2px solid #e5c07b;
+    border-right: 2px solid #e5c07b;
+}
+
+.corner-bottom-left {
+    bottom: 20px;
+    left: 20px;
+    border-bottom: 2px solid #e5c07b;
+    border-left: 2px solid #e5c07b;
+}
+
+.corner-bottom-right {
+    bottom: 20px;
+    right: 20px;
+    border-bottom: 2px solid #e5c07b;
+    border-right: 2px solid #e5c07b;
+}
+
+/* Partículas decorativas */
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(229, 192, 123, 0.3);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    50% { opacity: 0.3; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* Efectos de profundidad al hover */
+.container:hover .diagonal-line {
+    box-shadow: 0 0 25px rgba(229, 192, 123, 0.7);
+}
+
+/* Efectos de bordes brillantes */
+.form-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(229, 192, 123, 0.3) 0%, transparent 50%, rgba(229, 192, 123, 0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.form-panel:hover::before {
+    opacity: 0.5;
+}
+
+/* Logo de cocktail animado */
+.brand-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    opacity: 0.7;
+    z-index: 50;
+    transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+    transform: rotate(-10deg) scale(1.1);
+    opacity: 1;
+}
+
+/* Deslizamiento suave de campo a campo */
+.staggered-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggerFadeIn 0.5s ease forwards;
+}
+
+@keyframes staggerFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+
+/* Indicadores de estado de formulario */
+.form-indicator {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e5c07b;
+    top: 50%;
+    transition: all 0.8s ease;
+}
+
+.login-indicator {
+    left: -20px;
+    opacity: 1;
+}
+
+.register-indicator {
+    right: -20px;
+    opacity: 0;
+}
+
+.container.registering .login-indicator {
+    opacity: 0;
+}
+
+.container.registering .register-indicator {
+    opacity: 1;
+}
+
+/* Efecto de vidrio */
+.glass-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.form-panel:hover .glass-effect {
+    opacity: 0.05;
+}
+
+/* Indicador de carga en botón */
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-left-color: #1a1a1a;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.btn.clicked::after {
+    display: block;
+}
+
+.btn.clicked {
+    padding-left: 30px;
+}

@@ -1,0 +1,322 @@
+<link rel="stylesheet" href="../css/dashboard.css">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteBar - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Elite<span>Bar</span></h1>
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-wine-glass-alt"></i> Inventario</a></li>
+                <li><a href="#"><i class="fas fa-cocktail"></i> Cócteles</a></li>
+                <li><a href="#"><i class="fas fa-receipt"></i> Ventas</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar">
+                <img src="/api/placeholder/40/40" alt="Usuario">
+            </div>
+            <div class="user-info">
+                <h3>Administrador</h3>
+                <p>Premium</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar...">
+            </div>
+            <div class="top-menu">
+                <button class="notification-btn"><i class="fas fa-bell"></i><span class="badge">3</span></button>
+                <button class="help-btn"><i class="fas fa-question-circle"></i></button>
+            </div>
+        </header>
+
+        <div class="page-title">
+            <h2>Dashboard</h2>
+            <p class="date">Jueves, 15 de Mayo 2025</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Ventas del día</h3>
+                    <p class="stat-value">$1,250</p>
+                    <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 15% vs ayer</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Bebidas servidas</h3>
+                    <p class="stat-value">42</p>
+                    <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 8% vs ayer</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Clientes</h3>
+                    <p class="stat-value">18</p>
+                    <p class="stat-change negative"><i class="fas fa-arrow-down"></i> 5% vs ayer</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-wine-bottle"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Stock bajo</h3>
+                    <p class="stat-value">3</p>
+                    <p class="stat-alert"><i class="fas fa-exclamation-triangle"></i> Revisar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <section class="chart-section">
+                <div class="section-header">
+                    <h3>Ventas semanales</h3>
+                    <div class="controls">
+                        <button class="control-btn active">Semana</button>
+                        <button class="control-btn">Mes</button>
+                        <button class="control-btn">Año</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <!-- Aquí iría un gráfico real en una implementación completa -->
+                    <div class="placeholder-chart">
+                        <div class="bar" style="height: 30%"></div>
+                        <div class="bar" style="height: 45%"></div>
+                        <div class="bar" style="height: 65%"></div>
+                        <div class="bar" style="height: 80%"></div>
+                        <div class="bar" style="height: 50%"></div>
+                        <div class="bar" style="height: 95%"></div>
+                        <div class="bar" style="height: 75%"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>Lun</span>
+                        <span>Mar</span>
+                        <span>Mié</span>
+                        <span>Jue</span>
+                        <span>Vie</span>
+                        <span>Sáb</span>
+                        <span>Dom</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="top-selling">
+                <div class="section-header">
+                    <h3>Top Cócteles</h3>
+                    <button class="view-all">Ver todos <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <ul class="cocktail-list">
+                    <li class="cocktail-item">
+                        <div class="cocktail-info">
+                            <div class="cocktail-icon gold">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4>Old Fashioned</h4>
+                                <p>Whisky, Azúcar, Angostura</p>
+                            </div>
+                        </div>
+                        <div class="cocktail-sales">28 vendidos</div>
+                    </li>
+                    <li class="cocktail-item">
+                        <div class="cocktail-info">
+                            <div class="cocktail-icon silver">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4>Margarita</h4>
+                                <p>Tequila, Triple Sec, Limón</p>
+                            </div>
+                        </div>
+                        <div class="cocktail-sales">22 vendidos</div>
+                    </li>
+                    <li class="cocktail-item">
+                        <div class="cocktail-info">
+                            <div class="cocktail-icon bronze">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4>Mojito</h4>
+                                <p>Ron, Menta, Lima, Azúcar</p>
+                            </div>
+                        </div>
+                        <div class="cocktail-sales">19 vendidos</div>
+                    </li>
+                    <li class="cocktail-item">
+                        <div class="cocktail-info">
+                            <div class="cocktail-icon">
+                                <i class="fas fa-cocktail"></i>
+                            </div>
+                            <div>
+                                <h4>Negroni</h4>
+                                <p>Gin, Campari, Vermut</p>
+                            </div>
+                        </div>
+                        <div class="cocktail-sales">15 vendidos</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="recent-activity">
+                <div class="section-header">
+                    <h3>Actividad Reciente</h3>
+                    <button class="view-all">Ver todo <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-cash-register"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Nueva venta</h4>
+                            <p>Old Fashioned + Margarita</p>
+                            <span class="activity-time">Hace 5 minutos</span>
+                        </div>
+                        <div class="activity-value">$32</div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Stock actualizado</h4>
+                            <p>Whisky Bourbon +3 botellas</p>
+                            <span class="activity-time">Hace 30 minutos</span>
+                        </div>
+                        <div class="activity-value"></div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Nuevo cliente VIP</h4>
+                            <p>Carlos Mendez</p>
+                            <span class="activity-time">Hace 2 horas</span>
+                        </div>
+                        <div class="activity-value"></div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Alerta de inventario</h4>
+                            <p>Gin - Nivel bajo</p>
+                            <span class="activity-time">Hace 4 horas</span>
+                        </div>
+                        <div class="activity-value"></div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="inventory-status">
+                <div class="section-header">
+                    <h3>Estado del Inventario</h3>
+                    <button class="view-all">Gestionar <i class="fas fa-cog"></i></button>
+                </div>
+                <div class="inventory-bars">
+                    <div class="inventory-item">
+                        <div class="item-info">
+                            <h4>Whisky</h4>
+                            <p>4 botellas</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="item-info">
+                            <h4>Gin</h4>
+                            <p>1 botella</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar low" style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="item-info">
+                            <h4>Vodka</h4>
+                            <p>3 botellas</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="item-info">
+                            <h4>Ron</h4>
+                            <p>2 botellas</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar medium" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <div class="inventory-item">
+                        <div class="item-info">
+                            <h4>Tequila</h4>
+                            <p>1 botella</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar low" style="width: 15%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Script para efectos interactivos
+    document.addEventListener('DOMContentLoaded', function() {
+        // Hacer que los elementos de menú sean interactivos
+        const menuItems = document.querySelectorAll('.main-menu li');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menuItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Efecto para botones de control
+        const controlBtns = document.querySelectorAll('.control-btn');
+        controlBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                controlBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+</script>
+</body>
+</html>

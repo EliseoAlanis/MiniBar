@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="../css/InicioDeSesion.css">
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Bar - Autenticación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container" id="container">
+    <!-- Elementos decorativos -->
+    <div class="decorative-circle circle1"></div>
+    <div class="decorative-circle circle2"></div>
+    <div class="diagonal-line"></div>
+    <div class="particles-container" id="particles"></div>
+
+    <div class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="#e5c07b">
+            <path d="M8 22h8m-4-6v6M5 2h14l1 2-7 7v7l-2 2-2-2v-7L2 4l1-2z"/>
+        </svg>
+    </div>
+
+    <div class="cocktail-icon icon1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#e5c07b" stroke-width="1.5">
+            <path d="M8 22h8m-4-6v6M5 2h14l1 2-7 7v7l-2 2-2-2v-7L2 4l1-2z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <div class="cocktail-icon icon2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#e5c07b" stroke-width="1.5">
+            <path d="M8 21h8m-4-6v6M19.2 3.8c-.4-1-1.6-1.4-2.6-1-1 .5-1.4 1.6-1 2.6m-9 8.2L3 7c-.6-1.1.1-2.5 1.4-2.8l.6-.1c.8-.2 1.6.3 1.9 1l5.2 9.8m6.2-5.1L22 7c.6-1.1-.1-2.5-1.4-2.8l-.6-.1c-.8-.2-1.6.3-1.9 1l-3.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <div class="form-panel">
+        <!-- Esquinas elegantes -->
+        <div class="corner-decoration corner-top-left"></div>
+        <div class="corner-decoration corner-top-right"></div>
+        <div class="corner-decoration corner-bottom-left"></div>
+        <div class="corner-decoration corner-bottom-right"></div>
+        <div class="glass-effect"></div>
+
+        <div class="form-indicator login-indicator"></div>
+        <div class="form-indicator register-indicator"></div>
+
+        <h2 id="formTitle">Inicia Sesión</h2>
+
+        <div class="form-fields login-fields">
+            <div class="form-group staggered-animation">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required />
+            </div>
+            <div class="form-group staggered-animation">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="••••••••" required />
+            </div>
+            <button onclick="window.location.href='terminos.html'" class="btn-terminos">
+                Ver Términos y Condiciones
+            </button>
+            </form>
+            <button type="submit" class="btn staggered-animation" id="loginBtn">Iniciar Sesión</button>
+            <div class="toggle-text staggered-animation">
+                ¿No tienes cuenta? <span onclick="toggleMode()">Regístrate</span>
+            </div>
+        </div>
+
+        <div class="form-fields register-fields">
+            <div class="form-group staggered-animation">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group staggered-animation">
+                <label for="register-email">Correo electrónico</label>
+                <input type="email" id="register-email" placeholder="tucorreo@ejemplo.com" required />
+            </div>
+            <div class="form-group staggered-animation">
+                <label for="register-password">Contraseña</label>
+                <input type="password" id="register-password" placeholder="••••••••" required />
+            </div>
+            <div class="form-group staggered-animation">
+                <label for="confirm-password">Confirmar contraseña</label>
+                <input type="password" id="confirm-password" placeholder="••••••••" required />
+            </div>
+            <button type="submit" class="btn staggered-animation" id="registerBtn">Crear Cuenta</button>
+            <div class="toggle-text staggered-animation">
+                ¿Ya tienes cuenta? <span onclick="toggleMode()">Inicia Sesión</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-panel"></div>
+</div>
+
+<script>
+    const container = document.getElementById('container');
+    const formTitle = document.getElementById('formTitle');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+
+    // Crear partículas decorativas
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Posición aleatoria
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const size = Math.random() * 4 + 2;
+
+            particle.style.left = `${posX}%`;
+            particle.style.bottom = `${posY}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDelay = `${delay}s`;
+
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    function toggleMode() {
+        // Añadir clase transitioning para suavizar el cambio
+        container.classList.add('transitioning');
+
+        // Temporizador para hacer la transición suave
+        setTimeout(() => {
+            container.classList.toggle('registering');
+            formTitle.textContent = container.classList.contains('registering')
+                ? 'Crea tu Cuenta'
+                : 'Inicia Sesión';
+
+            // Quitar la clase transitioning después de completar el cambio principal
+            setTimeout(() => {
+                container.classList.remove('transitioning');
+            }, 300);
+        }, 300);
+    }
+
+    // Simulación de carga al hacer clic en botones
+    loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.classList.add('clicked');
+        setTimeout(() => {
+            this.classList.remove('clicked');
+        }, 2000);
+    });
+
+    registerBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.classList.add('clicked');
+        setTimeout(() => {
+            this.classList.remove('clicked');
+        }, 2000);
+    });
+
+    // Iniciar partículas al cargar
+    document.addEventListener('DOMContentLoaded', createParticles);
+</script>
+</body>
+</html>
