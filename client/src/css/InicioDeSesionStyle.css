@@ -549,3 +549,12 @@ h2::after {
 .btn.clicked {
     padding-left: 30px;
 }
+.btn-terminos {
+    margin-top: 10px;
+    background-color: transparent;
+    color: #e5c07b;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9em;
+}

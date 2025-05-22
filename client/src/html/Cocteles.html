@@ -1,0 +1,633 @@
+<link rel="stylesheet" href="../css/CoctelesStyle.css">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteBar - Cócteles</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Elite<span>Bar</span></h1>
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-wine-glass-alt"></i> Inventario</a></li>
+                <li class="active"><a href="cocteles.html"><i class="fas fa-cocktail"></i> Cócteles</a></li>
+                <li><a href="#"><i class="fas fa-receipt"></i> Ventas</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar">
+                <img src="/api/placeholder/40/40" alt="Usuario">
+            </div>
+            <div class="user-info">
+                <h3>Administrador</h3>
+                <p>Premium</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar cócteles..." id="searchInput">
+            </div>
+            <div class="top-menu">
+                <button class="notification-btn"><i class="fas fa-bell"></i><span class="badge">3</span></button>
+                <button class="help-btn"><i class="fas fa-question-circle"></i></button>
+            </div>
+        </header>
+
+        <div class="page-title">
+            <h2>Carta de Cócteles</h2>
+            <p class="date">Gestión y preparación de bebidas</p>
+        </div>
+
+        <!-- Controles superiores -->
+        <div class="cocktail-controls">
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label>Categoría:</label>
+                    <select id="categoryFilter">
+                        <option value="all">Todas las categorías</option>
+                        <option value="clasicos">Clásicos</option>
+                        <option value="tropicales">Tropicales</option>
+                        <option value="contemporaneos">Contemporáneos</option>
+                        <option value="sin-alcohol">Sin alcohol</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Dificultad:</label>
+                    <select id="difficultyFilter">
+                        <option value="all">Todas</option>
+                        <option value="facil">Fácil</option>
+                        <option value="medio">Medio</option>
+                        <option value="dificil">Difícil</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Ingrediente base:</label>
+                    <select id="baseFilter">
+                        <option value="all">Todos</option>
+                        <option value="whisky">Whisky</option>
+                        <option value="gin">Gin</option>
+                        <option value="vodka">Vodka</option>
+                        <option value="ron">Ron</option>
+                        <option value="tequila">Tequila</option>
+                    </select>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-primary" id="addCocktailBtn">
+                    <i class="fas fa-plus"></i> Nuevo Cóctel
+                </button>
+                <button class="btn-secondary">
+                    <i class="fas fa-download"></i> Exportar Carta
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid de cócteles -->
+        <div class="cocktails-grid" id="cocktailsGrid">
+            <!-- Cóctel 1 -->
+            <div class="cocktail-card" data-category="clasicos" data-difficulty="medio" data-base="whisky">
+                <div class="cocktail-image">
+                    <img src="/api/placeholder/250/200" alt="Old Fashioned">
+                    <div class="cocktail-badge best-seller">Best Seller</div>
+                </div>
+                <div class="cocktail-content">
+                    <div class="cocktail-header">
+                        <h3>Old Fashioned</h3>
+                        <div class="cocktail-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(4.8)</span>
+                        </div>
+                    </div>
+                    <p class="cocktail-description">El cóctel clásico que nunca pasa de moda. Whisky, azúcar y Angostura en perfecta armonía.</p>
+                    <div class="cocktail-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>3 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Con hielo</span>
+                        </div>
+                        <div class="info-item difficulty-medium">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Medio</span>
+                        </div>
+                    </div>
+                    <div class="cocktail-price">$18.00</div>
+                    <div class="cocktail-actions">
+                        <button class="btn-view" onclick="viewCocktail('old-fashioned')">
+                            <i class="fas fa-eye"></i> Ver Receta
+                        </button>
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-stats">
+                            <i class="fas fa-chart-bar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cóctel 2 -->
+            <div class="cocktail-card" data-category="clasicos" data-difficulty="facil" data-base="tequila">
+                <div class="cocktail-image">
+                    <img src="/api/placeholder/250/200" alt="Margarita">
+                    <div class="cocktail-badge trending">Trending</div>
+                </div>
+                <div class="cocktail-content">
+                    <div class="cocktail-header">
+                        <h3>Margarita</h3>
+                        <div class="cocktail-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.5)</span>
+                        </div>
+                    </div>
+                    <p class="cocktail-description">Refrescante y cítrico, perfecto para cualquier ocasión. Tequila, Triple Sec y limón fresco.</p>
+                    <div class="cocktail-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>2 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Con hielo</span>
+                        </div>
+                        <div class="info-item difficulty-easy">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Fácil</span>
+                        </div>
+                    </div>
+                    <div class="cocktail-price">$16.00</div>
+                    <div class="cocktail-actions">
+                        <button class="btn-view" onclick="viewCocktail('margarita')">
+                            <i class="fas fa-eye"></i> Ver Receta
+                        </button>
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-stats">
+                            <i class="fas fa-chart-bar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cóctel 3 -->
+            <div class="cocktail-card" data-category="tropicales" data-difficulty="facil" data-base="ron">
+                <div class="cocktail-image">
+                    <img src="/api/placeholder/250/200" alt="Mojito">
+                </div>
+                <div class="cocktail-content">
+                    <div class="cocktail-header">
+                        <h3>Mojito</h3>
+                        <div class="cocktail-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(4.9)</span>
+                        </div>
+                    </div>
+                    <p class="cocktail-description">Fresco y aromático, con menta y lima. El sabor del Caribe en cada sorbo.</p>
+                    <div class="cocktail-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>4 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Frío</span>
+                        </div>
+                        <div class="info-item difficulty-easy">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Fácil</span>
+                        </div>
+                    </div>
+                    <div class="cocktail-price">$15.00</div>
+                    <div class="cocktail-actions">
+                        <button class="btn-view" onclick="viewCocktail('mojito')">
+                            <i class="fas fa-eye"></i> Ver Receta
+                        </button>
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-stats">
+                            <i class="fas fa-chart-bar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cóctel 4 -->
+            <div class="cocktail-card" data-category="clasicos" data-difficulty="medio" data-base="gin">
+                <div class="cocktail-image">
+                    <img src="/api/placeholder/250/200" alt="Negroni">
+                    <div class="cocktail-badge premium">Premium</div>
+                </div>
+                <div class="cocktail-content">
+                    <div class="cocktail-header">
+                        <h3>Negroni</h3>
+                        <div class="cocktail-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.3)</span>
+                        </div>
+                    </div>
+                    <p class="cocktail-description">Elegante y sofisticado. Gin, Campari y Vermut rojo en perfecta proporción.</p>
+                    <div class="cocktail-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>2 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Con hielo</span>
+                        </div>
+                        <div class="info-item difficulty-medium">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Medio</span>
+                        </div>
+                    </div>
+                    <div class="cocktail-price">$20.00</div>
+                    <div class="cocktail-actions">
+                        <button class="btn-view" onclick="viewCocktail('negroni')">
+                            <i class="fas fa-eye"></i> Ver Receta
+                        </button>
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-stats">
+                            <i class="fas fa-chart-bar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cóctel 5 -->
+            <div class="cocktail-card" data-category="contemporaneos" data-difficulty="dificil" data-base="gin">
+                <div class="cocktail-image">
+                    <img src="/api/placeholder/250/200" alt="Aviation">
+                    <div class="cocktail-badge new">Nuevo</div>
+                </div>
+                <div class="cocktail-content">
+                    <div class="cocktail-header">
+                        <h3>Aviation</h3>
+                        <div class="cocktail-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.2)</span>
+                        </div>
+                    </div>
+                    <p class="cocktail-description">Un cóctel floral y elegante con gin, marasquino, crème de violette y limón.</p>
+                    <div class="cocktail-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>5 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Frío</span>
+                        </div>
+                        <div class="info-item difficulty-hard">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Difícil</span>
+                        </div>
+                    </div>
+                    <div class="cocktail-price">$24.00</div>
+                    <div class="cocktail-actions">
+                        <button class="btn-view" onclick="viewCocktail('aviation')">
+                            <i class="fas fa-eye"></i> Ver Receta
+                        </button>
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-stats">
+                            <i class="fas fa-chart-bar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cóctel 6 -->
+            <div class="cocktail-card" data-category="sin-alcohol" data-difficulty="facil" data-base="sin-alcohol">
+                <div class="cocktail-image">
+                    <img src="/api/placeholder/250/200" alt="Virgin Mojito">
+                    <div class="cocktail-badge healthy">Saludable</div>
+                </div>
+                <div class="cocktail-content">
+                    <div class="cocktail-header">
+                        <h3>Virgin Mojito</h3>
+                        <div class="cocktail-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.1)</span>
+                        </div>
+                    </div>
+                    <p class="cocktail-description">Toda la frescura del mojito tradicional sin alcohol. Menta, lima y agua con gas.</p>
+                    <div class="cocktail-info">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>3 min</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Frío</span>
+                        </div>
+                        <div class="info-item difficulty-easy">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Fácil</span>
+                        </div>
+                    </div>
+                    <div class="cocktail-price">$12.00</div>
+                    <div class="cocktail-actions">
+                        <button class="btn-view" onclick="viewCocktail('virgin-mojito')">
+                            <i class="fas fa-eye"></i> Ver Receta
+                        </button>
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-stats">
+                            <i class="fas fa-chart-bar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paginación -->
+        <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <span class="page-dots">...</span>
+            <button class="page-btn">8</button>
+            <button class="page-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </main>
+</div>
+
+<!-- Modal para ver receta -->
+<div class="modal-overlay" id="recipeModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Old Fashioned</h2>
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="recipe-content">
+                <div class="recipe-image">
+                    <img src="/api/placeholder/300/250" alt="Cóctel" id="modalImage">
+                    <div class="recipe-stats">
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>3 min</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span>1 porción</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>$18.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recipe-details">
+                    <div class="ingredients-section">
+                        <h3>Ingredientes</h3>
+                        <ul class="ingredients-list" id="ingredientsList">
+                            <li>60ml Whisky Bourbon</li>
+                            <li>1 terrón de azúcar</li>
+                            <li>2-3 gotas de Angostura</li>
+                            <li>Piel de naranja</li>
+                            <li>Hielo</li>
+                        </ul>
+                    </div>
+                    <div class="instructions-section">
+                        <h3>Preparación</h3>
+                        <ol class="instructions-list" id="instructionsList">
+                            <li>Colocar el terrón de azúcar en un vaso old fashioned</li>
+                            <li>Agregar las gotas de Angostura sobre el azúcar</li>
+                            <li>Machacar ligeramente para disolver el azúcar</li>
+                            <li>Agregar el whisky y mezclar suavemente</li>
+                            <li>Añadir hielo y revolver brevemente</li>
+                            <li>Decorar con la piel de naranja expresada</li>
+                        </ol>
+                    </div>
+                    <div class="tips-section">
+                        <h3>Consejos del Bartender</h3>
+                        <p id="bartenderTips">Para un mejor sabor, utiliza whisky bourbon de calidad y expresa bien los aceites de la piel de naranja sobre la bebida antes de añadirla como decoración.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Funcionalidad de búsqueda y filtros
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const difficultyFilter = document.getElementById('difficultyFilter');
+        const baseFilter = document.getElementById('baseFilter');
+        const cocktailsGrid = document.getElementById('cocktailsGrid');
+        const cocktailCards = document.querySelectorAll('.cocktail-card');
+
+        function filterCocktails() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+            const selectedDifficulty = difficultyFilter.value;
+            const selectedBase = baseFilter.value;
+
+            cocktailCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const category = card.dataset.category;
+                const difficulty = card.dataset.difficulty;
+                const base = card.dataset.base;
+
+                const matchesSearch = title.includes(searchTerm);
+                const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+                const matchesDifficulty = selectedDifficulty === 'all' || difficulty === selectedDifficulty;
+                const matchesBase = selectedBase === 'all' || base === selectedBase;
+
+                if (matchesSearch && matchesCategory && matchesDifficulty && matchesBase) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.3s ease-in';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterCocktails);
+        categoryFilter.addEventListener('change', filterCocktails);
+        difficultyFilter.addEventListener('change', filterCocktails);
+        baseFilter.addEventListener('change', filterCocktails);
+
+        // Hacer que los elementos de menú sean interactivos
+        const menuItems = document.querySelectorAll('.main-menu li');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menuItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+
+    // Función para ver receta
+    function viewCocktail(cocktailId) {
+        const modal = document.getElementById('recipeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const ingredientsList = document.getElementById('ingredientsList');
+        const instructionsList = document.getElementById('instructionsList');
+        const bartenderTips = document.getElementById('bartenderTips');
+
+        // Datos de ejemplo (en una app real vendría de una base de datos)
+        const cocktailData = {
+            'old-fashioned': {
+                title: 'Old Fashioned',
+                image: '/api/placeholder/300/250',
+                ingredients: [
+                    '60ml Whisky Bourbon',
+                    '1 terrón de azúcar',
+                    '2-3 gotas de Angostura',
+                    'Piel de naranja',
+                    'Hielo'
+                ],
+                instructions: [
+                    'Colocar el terrón de azúcar en un vaso old fashioned',
+                    'Agregar las gotas de Angostura sobre el azúcar',
+                    'Machacar ligeramente para disolver el azúcar',
+                    'Agregar el whisky y mezclar suavemente',
+                    'Añadir hielo y revolver brevemente',
+                    'Decorar con la piel de naranja expresada'
+                ],
+                tips: 'Para un mejor sabor, utiliza whisky bourbon de calidad y expresa bien los aceites de la piel de naranja sobre la bebida antes de añadirla como decoración.'
+            },
+            'margarita': {
+                title: 'Margarita',
+                image: '/api/placeholder/300/250',
+                ingredients: [
+                    '50ml Tequila blanco',
+                    '25ml Triple Sec',
+                    '25ml Jugo de limón fresco',
+                    'Sal para el borde',
+                    'Hielo'
+                ],
+                instructions: [
+                    'Escarchar el borde del vaso con sal',
+                    'Agregar todos los ingredientes en una coctelera',
+                    'Añadir hielo y agitar vigorosamente',
+                    'Colar en el vaso preparado con hielo fresco',
+                    'Decorar con una rodaja de limón'
+                ],
+                tips: 'Usa limón fresco recién exprimido para el mejor sabor. El escarchado de sal debe ser uniforme y no excesivo.'
+            },
+            'mojito': {
+                title: 'Mojito',
+                image: '/api/placeholder/300/250',
+                ingredients: [
+                    '50ml Ron blanco',
+                    '8-10 hojas de menta fresca',
+                    '25ml Jugo de lima fresco',
+                    '2 cucharaditas de azúcar',
+                    'Agua con gas',
+                    'Hielo'
+                ],
+                instructions: [
+                    'Colocar las hojas de menta y azúcar en el vaso',
+                    'Machacar suavemente la menta',
+                    'Agregar el jugo de lima y el ron',
+                    'Llenar el vaso con hielo picado',
+                    'Completar con agua con gas',
+                    'Decorar con una rama de menta'
+                ],
+                tips: 'No machaque demasiado la menta para evitar amargor. Use hielo picado para mejor dilución.'
+            }
+        };
+
+        const data = cocktailData[cocktailId] || cocktailData['old-fashioned'];
+
+        modalTitle.textContent = data.title;
+        modalImage.src = data.image;
+        modalImage.alt = data.title;
+
+        ingredientsList.innerHTML = data.ingredients.map(ingredient =>
+            `<li>${ingredient}</li>`
+        ).join('');
+
+        instructionsList.innerHTML = data.instructions.map(instruction =>
+            `<li>${instruction}</li>`
+        ).join('');
+
+        bartenderTips.textContent = data.tips;
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('recipeModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Cerrar modal al hacer clic fuera de él
+    document.getElementById('recipeModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    // Animación de fadeIn
+    const style = document.createElement('style');
+    style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>
