@@ -1,0 +1,43 @@
+<!-- src/html/InicioDeSesion.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesión</title>
+</head>
+<body>
+<h1>Iniciar sesión</h1>
+<form id="loginForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" required><br>
+
+    <button type="submit">Ingresar</button>
+</form>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const res = await fetch('/api/users/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+            alert('Inicio de sesión exitoso');
+            // Redirigí al menú principal, por ejemplo:
+            // window.location.href = '/html/MenuPrincipal.html';
+        } else {
+            alert('Error: ' + data.error);
+        }
+    });
+</script>
+</body>
+</html>
