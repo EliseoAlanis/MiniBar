@@ -37,6 +37,11 @@
         } else {
             alert('Error: ' + data.error);
         }
+        if (result.rows.length > 0) {
+            const user = result.rows[0];
+            res.json({ message: 'Login exitoso', user });
+        }
+
     });
 </script>
 </body>

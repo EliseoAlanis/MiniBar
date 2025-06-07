@@ -178,8 +178,11 @@
             const data = await res.json();
             if (res.ok) {
                 alert('Inicio de sesión exitoso');
-                // Redirige a tu página principal
-                // window.location.href = '/html/MenuPrincipal.html';
+                if (data.user.role === 'admin') {
+                    window.location.href = '/html/DashboardAdmin.html';
+                } else {
+                    window.location.href = '/html/MenuPrincipal.html';
+                }
             } else {
                 alert('Error: ' + data.error);
             }
