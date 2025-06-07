@@ -19,8 +19,8 @@ app.get('/login', (req, res) => {
     res.sendFile(path.join(publicPath, 'html', 'InicioDeSesion.html'));
 });
 
-app.get('/registro', (req, res) => {
-    res.sendFile(path.join(publicPath, 'html', 'Registro.html'));
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(publicPath, 'html', 'Register.html'));
 });
 
 // Rutas de la API
@@ -30,4 +30,13 @@ app.use('/api/users', userRoutes);
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor corriendo en http://0.0.0.0:${PORT}`);
+});
+
+
+
+const servoRoutes = require('./routes/servo');
+app.use('/api', servoRoutes);
+
+app.get('/control', (req, res) => {
+    res.sendFile(path.join(publicPath, 'html', 'ControlServo.html'));
 });

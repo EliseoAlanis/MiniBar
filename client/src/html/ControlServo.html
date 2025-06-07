@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Control del Minibar</title>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif;">
+
+<h2>Controlar el Minibar</h2>
+<label for="bebida">Elige tu bebida:</label>
+<select id="bebida" style="margin-bottom: 20px; font-size: 16px;">
+    <option value="1">Jugo</option>
+    <option value="2">Coca</option>
+    <option value="3">Fernet</option>
+</select>
+<button id="servirBtn" style="padding: 10px 20px; font-size: 18px;">Servir Bebida</button>
+
+<script>
+    document.getElementById("servirBtn").addEventListener("click", async () => {
+        const bebida = document.getElementById("bebida").value;
+        try {
+            const response = await fetch("/api/servir", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ bebida })
+            });
+
+            const result = await response.json();
+            alert(result.msg || "Bebida servida.");
+        } catch (err) {
+            console.error("Error:", err);
+            alert("No se pudo enviar la orden al minibar.");
+        }
+    });
+</script>
+
+</body>
+</html>
