@@ -947,15 +947,22 @@ button:focus, a:focus, input:focus {
 
 .cocktail-image {
     position: relative;
-    height: 200px;
+    height: 385px;
+    width: 100%;
     overflow: hidden;
+    background-color: var(--mid-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cocktail-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
+    object-position: center;
     transition: transform var(--transition-speed);
+    display: block;
 }
 
 .cocktail-card:hover .cocktail-image img {
@@ -1250,7 +1257,7 @@ button:focus, a:focus, input:focus {
 
 .recipe-image img {
     width: 100%;
-    height: 250px;
+    height: 500px;
     object-fit: cover;
     border-radius: var(--border-radius);
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EliteBar - Cócteles</title>
+    <title>MiniBar - Cócteles</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,11 +13,11 @@
     <!-- Barra lateral -->
     <aside class="sidebar">
         <div class="logo">
-            <h1>Elite<span>Bar</span></h1>
+            <h1>Mini<span>Bar</span></h1>
         </div>
         <nav class="main-menu">
             <ul>
-                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/Electronica/client/src/html/DashboardAdmin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="#"><i class="fas fa-wine-glass-alt"></i> Inventario</a></li>
                 <li class="active"><a href="cocteles.html"><i class="fas fa-cocktail"></i> Cócteles</a></li>
                 <li><a href="#"><i class="fas fa-receipt"></i> Ventas</a></li>
@@ -103,7 +103,7 @@
             <!-- Cóctel 1 -->
             <div class="cocktail-card" data-category="clasicos" data-difficulty="medio" data-base="whisky">
                 <div class="cocktail-image">
-                    <img src="/api/placeholder/250/200" alt="Old Fashioned">
+                    <img src="../assets/Old-fashion.jpg" alt="Old Fashioned">
                     <div class="cocktail-badge best-seller">Best Seller</div>
                 </div>
                 <div class="cocktail-content">
@@ -151,7 +151,7 @@
             <!-- Cóctel 2 -->
             <div class="cocktail-card" data-category="clasicos" data-difficulty="facil" data-base="tequila">
                 <div class="cocktail-image">
-                    <img src="/api/placeholder/250/200" alt="Margarita">
+                    <img src="../assets/Margarita.jpg" alt="Margarita">
                     <div class="cocktail-badge trending">Trending</div>
                 </div>
                 <div class="cocktail-content">
@@ -199,7 +199,7 @@
             <!-- Cóctel 3 -->
             <div class="cocktail-card" data-category="tropicales" data-difficulty="facil" data-base="ron">
                 <div class="cocktail-image">
-                    <img src="/api/placeholder/250/200" alt="Mojito">
+                    <img src="../assets/Mojito.jpg" alt="Mojito">
                 </div>
                 <div class="cocktail-content">
                     <div class="cocktail-header">
@@ -244,9 +244,9 @@
             </div>
 
             <!-- Cóctel 4 -->
-            <div class="cocktail-card" data-category="clasicos" data-difficulty="medio" data-base="gin">
+            <div class="cocktail-card" data-category="clasicos" data-difficulty="dificil" data-base="gin">
                 <div class="cocktail-image">
-                    <img src="/api/placeholder/250/200" alt="Negroni">
+                    <img src="../assets/negroni.jpg" alt="Negroni">
                     <div class="cocktail-badge premium">Premium</div>
                 </div>
                 <div class="cocktail-content">
@@ -294,7 +294,7 @@
             <!-- Cóctel 5 -->
             <div class="cocktail-card" data-category="contemporaneos" data-difficulty="dificil" data-base="gin">
                 <div class="cocktail-image">
-                    <img src="/api/placeholder/250/200" alt="Aviation">
+                    <img src="../assets/aviationcocktail.jpg" alt="Aviation">
                     <div class="cocktail-badge new">Nuevo</div>
                 </div>
                 <div class="cocktail-content">
@@ -342,8 +342,8 @@
             <!-- Cóctel 6 -->
             <div class="cocktail-card" data-category="sin-alcohol" data-difficulty="facil" data-base="sin-alcohol">
                 <div class="cocktail-image">
-                    <img src="/api/placeholder/250/200" alt="Virgin Mojito">
-                    <div class="cocktail-badge healthy">Saludable</div>
+                    <img src='../assets/VirginMojito.jpg' alt="Virgin Mojito">
+                    <div class="cocktail-badge healthy">Sin alcohol</div>
                 </div>
                 <div class="cocktail-content">
                     <div class="cocktail-header">
@@ -374,7 +374,7 @@
                     </div>
                     <div class="cocktail-price">$12.00</div>
                     <div class="cocktail-actions">
-                        <button class="btn-view" onclick="viewCocktail('virgin-mojito')">
+                        <button class="btn-view" onclick="viewCocktail('VirginMojito')">
                             <i class="fas fa-eye"></i> Ver Receta
                         </button>
                         <button class="btn-edit">
@@ -386,18 +386,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Paginación -->
-        <div class="pagination">
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <span class="page-dots">...</span>
-            <button class="page-btn">8</button>
-            <button class="page-next">
-                <i class="fas fa-chevron-right"></i>
-            </button>
         </div>
     </main>
 </div>
@@ -414,19 +402,11 @@
         <div class="modal-body">
             <div class="recipe-content">
                 <div class="recipe-image">
-                    <img src="/api/placeholder/300/250" alt="Cóctel" id="modalImage">
+                    <img src="api" alt="Cóctel" id="modalImage">
                     <div class="recipe-stats">
-                        <div class="stat">
-                            <i class="fas fa-clock"></i>
-                            <span>3 min</span>
-                        </div>
                         <div class="stat">
                             <i class="fas fa-users"></i>
                             <span>1 porción</span>
-                        </div>
-                        <div class="stat">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span>$18.00</span>
                         </div>
                     </div>
                 </div>
@@ -526,7 +506,7 @@
         const cocktailData = {
             'old-fashioned': {
                 title: 'Old Fashioned',
-                image: '/api/placeholder/300/250',
+                image: "../assets/Old-fashion.jpg",
                 ingredients: [
                     '60ml Whisky Bourbon',
                     '1 terrón de azúcar',
@@ -546,7 +526,7 @@
             },
             'margarita': {
                 title: 'Margarita',
-                image: '/api/placeholder/300/250',
+                image: "../assets/Margarita.jpg",
                 ingredients: [
                     '50ml Tequila blanco',
                     '25ml Triple Sec',
@@ -565,7 +545,7 @@
             },
             'mojito': {
                 title: 'Mojito',
-                image: '/api/placeholder/300/250',
+                image: "../assets/mojito.jpg",
                 ingredients: [
                     '50ml Ron blanco',
                     '8-10 hojas de menta fresca',
@@ -583,8 +563,68 @@
                     'Decorar con una rama de menta'
                 ],
                 tips: 'No machaque demasiado la menta para evitar amargor. Use hielo picado para mejor dilución.'
+            },
+            'negroni': {
+                title: 'Negroni',
+                image: "../assets/negroni.jpg",
+                ingredients: [
+                    '30ml Ginebra',
+                    '30ml Campari',
+                    '30ml Vermut rojo',
+                    'Hielo',
+                    'Rodaja de naranja (para decorar)'
+                ],
+                instructions: [
+                    'Llenar un vaso corto con hielo',
+                    'Añadir la ginebra, el Campari y el vermut rojo al vaso',
+                    'Remover suavemente con una cuchara de bar',
+                    'Decorar con una rodaja de naranja'
+                ],
+                tips: 'Utiliza ingredientes de buena calidad para un mejor equilibrio de sabores. El Negroni se sirve tradicionalmente en vaso corto, sin necesidad de coctelera.'
+            },
+            'aviation': {
+                title: 'Aviation',
+                image: "../assets/aviationcocktail.jpg",
+                ingredients: [
+                    '45ml Ginebra',
+                    '15ml Licor de marrasquino',
+                    '10ml Jugo de limón fresco',
+                    '5ml Crème de Violette (opcional)',
+                    'Hielo',
+                    'Cereza marrasquino o twist de limón (para decorar)'
+                ],
+                instructions: [
+                    'Agregar todos los ingredientes en una coctelera con hielo',
+                    'Agitar vigorosamente durante unos segundos',
+                    'Colar en una copa de cóctel previamente enfriada',
+                    'Decorar con una cereza marrasquino o un twist de limón'
+                ],
+                tips: 'La Crème de Violette le da al Aviation su característico tono púrpura; si no se usa, el cóctel será más claro. Usa jugo de limón recién exprimido para realzar el sabor.'
+            },
+            'VirginMojito': {
+                title: 'Virgin Mojito',
+                image: '../assets/VirginMojito.jpg',
+                ingredients: [
+                    '10 hojas de menta fresca',
+                    '30ml Jugo de limón fresco',
+                    '2 cucharaditas de azúcar',
+                    'Agua con gas o soda',
+                    'Hielo',
+                    'Rodajas de limón y ramitas de menta (para decorar)'
+                ],
+                instructions: [
+                    'Colocar las hojas de menta, el azúcar y el jugo de limón en un vaso',
+                    'Macerar suavemente para liberar los aromas de la menta',
+                    'Llenar el vaso con hielo',
+                    'Completar con agua con gas o soda',
+                    'Remover ligeramente y decorar con rodajas de limón y menta'
+                ],
+                tips: 'No machaques demasiado la menta para evitar que se vuelva amarga. Usa soda fría para un mojito más refrescante.'
             }
+
+
         };
+
 
         const data = cocktailData[cocktailId] || cocktailData['old-fashioned'];
 

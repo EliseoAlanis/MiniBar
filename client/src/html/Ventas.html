@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MiniBar - Ventas</title>
+    <link rel="stylesheet" href="../css/VentasStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .receipt {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            max-width: 450px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .receipt-header,
+        .receipt-footer {
+            text-align: center;
+        }
+        .receipt-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .receipt-table th,
+        .receipt-table td {
+            padding: 6px 8px;
+            text-align: left;
+            border-bottom: 1px dotted var(--mid-gray);
+        }
+        .receipt-table th {
+            border-bottom: 1px dashed var(--light-gray);
+            color: var(--accent-color);
+        }
+        .total {
+            text-align: right;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            border-top: 1px dashed var(--light-gray);
+            padding-top: 10px;
+            color: var(--accent-color);
+        }
+        .print-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .print-btn button {
+            background-color: var(--accent-color);
+            color: var(--black);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .dashboard-section {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <div class="logo"><h1>Mini<span>Bar</span></h1></div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-wine-glass-alt"></i> Inventario</a></li>
+                <li><a href="#"><i class="fas fa-cocktail"></i> Cócteles</a></li>
+                <li class="active"><a href="#"><i class="fas fa-receipt"></i> Ventas</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar"><img src="/api/placeholder/40/40" alt="Usuario"></div>
+            <div class="user-info"><h3>Administrador</h3><p>Premium</p></div>
+        </div>
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar venta...">
+            </div>
+            <div class="top-menu">
+                <button class="notification-btn"><i class="fas fa-bell"></i><span class="badge">2</span></button>
+                <button class="help-btn"><i class="fas fa-question-circle"></i></button>
+            </div>
+        </header>
+
+        <div class="page-title">
+            <h2>Ventas</h2>
+            <p class="date">Jueves, 15 de Mayo 2025</p>
+        </div>
+
+        <!-- Estadísticas rápidas -->
+        <section class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="stat-info">
+                    <h3>Ventas Hoy</h3>
+                    <p class="stat-value">$180</p>
+                    <p class="stat-change positive"><i class="fas fa-arrow-up"></i> +12% vs ayer</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-user"></i></div>
+                <div class="stat-info">
+                    <h3>Top Cliente</h3>
+                    <p class="stat-value">Carlos M.</p>
+                    <p class="stat-change">7 compras</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-cocktail"></i></div>
+                <div class="stat-info">
+                    <h3>Más Vendido</h3>
+                    <p class="stat-value">Margarita</p>
+                    <p class="stat-change">22 unidades</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Último recibo -->
+        <section class="receipt">
+            <div class="receipt-header">
+                <h3>MiniBar</h3>
+                <p>Venta N° 001249</p>
+                <p>Fecha: 15/05/2025</p>
+                <p>Cliente: <strong>Lucía Fernández</strong></p>
+            </div>
+            <table class="receipt-table">
+                <thead>
+                <tr><th>Producto</th><th>Cant.</th><th>Subtotal</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>Negroni</td><td>2</td><td>$14</td></tr>
+                <tr><td>Whisky</td><td>1</td><td>$10</td></tr>
+                </tbody>
+            </table>
+            <p class="total">Total: $24</p>
+            <div class="receipt-footer">
+                <p>¡Gracias por tu compra!</p>
+            </div>
+            <div class="print-btn">
+                <button onclick="window.print()"><i class="fas fa-print"></i> Imprimir Recibo</button>
+            </div>
+        </section>
+
+        <!-- Gráfico de ventas semanales y ranking -->
+        <section class="dashboard-grid dashboard-section">
+            <div class="chart-section">
+                <div class="section-header"><h3>Ventas Semanales</h3></div>
+                <div class="chart-container">
+                    <div class="placeholder-chart">
+                        <div class="bar" style="height: 60%"></div>
+                        <div class="bar" style="height: 80%"></div>
+                        <div class="bar" style="height: 50%"></div>
+                        <div class="bar" style="height: 90%"></div>
+                        <div class="bar" style="height: 70%"></div>
+                        <div class="bar" style="height: 30%"></div>
+                        <div class="bar" style="height: 40%"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top-selling">
+                <div class="section-header"><h3>Top Clientes</h3></div>
+                <ul class="cocktail-list">
+                    <li class="cocktail-item">
+                        <div class="cocktail-info">
+                            <div class="cocktail-icon gold"><i class="fas fa-user"></i></div>
+                            <div><h4>Carlos M.</h4><p>7 compras</p></div>
+                        </div>
+                    </li>
+                    <li class="cocktail-item">
+                        <div class="cocktail-info">
+                            <div class="cocktail-icon silver"><i class="fas fa-user"></i></div>
+                            <div><h4>Lucía F.</h4><p>5 compras</p></div>
+                        </div>
+                    </li>
+                    <li class="cocktail-item">
+                        <div class="cocktail-info">
+                            <div class="cocktail-icon bronze"><i class="fas fa-user"></i></div>
+                            <div><h4>Diego A.</h4><p>4 compras</p></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
