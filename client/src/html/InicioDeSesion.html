@@ -98,6 +98,7 @@
     const loginBtn = document.getElementById('loginBtn');
     const registerBtn = document.getElementById('registerBtn');
 
+
     // Crear partículas decorativas
     function createParticles() {
         const particlesContainer = document.getElementById('particles');
@@ -160,6 +161,63 @@
 
     // Iniciar partículas al cargar
     document.addEventListener('DOMContentLoaded', createParticles);
+
+
+    loginBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const res = await fetch('/api/users/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                alert('Inicio de sesión exitoso');
+                // Redirige a tu página principal
+                // window.location.href = '/html/MenuPrincipal.html';
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (err) {
+            alert('Error de red: ' + err.message);
+        }
+    });
+
+    // Agregar funcionalidad de registro
+    registerBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        const email = document.getElementById('register-email').value;
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+
+        if (password !== confirmPassword) {
+            alert('Las contraseñas no coinciden');
+            return;
+        }
+
+        try {
+            const res = await fetch('/api/users/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                alert('Usuario creado correctamente');
+                toggleMode(); // Cambia a vista de login automáticamente
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (err) {
+            alert('Error de red: ' + err.message);
+        }
+    });
 </script>
 </body>
 </html>
