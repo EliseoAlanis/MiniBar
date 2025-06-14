@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" href="../css/TragosPersonalizados.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tragos Personalizados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <h1 class="main-title">Tragos Personalizados</h1>
+        <p class="subtitle">Crea tu experiencia única</p>
+    </div>
+</header>
+<div class="container">
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Mini<span>Bar</span></h1>
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="Usuario.html"><i class="fas fa-users"></i> Usuario</a></li>
+                <li><a href="/Electronica/client/src/html/Cocteles.html"><i class="fa-solid fa-martini-glass"></i> Cócteles</a></li>
+                <li class="active"><a href="TragosPersonalizados.html"><i class="fas fa-blender"></i> Tragos Personalizados</a></li>
+                <li><a href="Banco.html"><i class="fas fa-university"></i> Banco</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <div class="avatar">
+                <img src="/api/placeholder/40/40" alt="Usuario">
+            </div>
+            <div class="user-info">
+                <h3>Cliente</h3>
+                <p>Miembro Premium</p>
+            </div>
+        </div>
+    </aside>
+    <main class="main-content">
+        <section class="section">
+            <h2 class="section-title">Selecciona tus Ingredientes</h2>
+
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <h3>Licores</h3>
+                    <ul class="ingredient-list">
+                        <li>Vodka Premium</li>
+                        <li>Ron Blanco</li>
+                        <li>Ron Dorado</li>
+                        <li>Gin London Dry</li>
+                        <li>Tequila Blanco</li>
+                        <li>Tequila Reposado</li>
+                    </ul>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>Alcoholes</h3>
+                    <ul class="ingredient-list">
+                        <li>Whisky Escocés</li>
+                        <li>Whisky Bourbon</li>
+                        <li>Brandy</li>
+                        <li>Cognac</li>
+                        <li>Vermut Rojo</li>
+                        <li>Vermut Blanco</li>
+                    </ul>
+                </div>
+
+                <div class="ingredient-card">
+                    <h3>Bebidas Complementarias</h3>
+                    <ul class="ingredient-list">
+                        <li>Jugo de Naranja</li>
+                        <li>Jugo de Limón</li>
+                        <li>Agua Tónica</li>
+                        <li>Ginger Beer</li>
+                        <li>Cola Premium</li>
+                        <li>Soda</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="decorative-line"></div>
+        </section>
+
+        <section id="crear-trago" class="trago-section">
+            <h2>Elegí tus ingredientes</h2>
+            <div class="selector">
+                <label for="licor">Licor o Alcohol:</label>
+                <select id="licor">
+                    <option value="">-- Elegí uno --</option>
+                    <option>Vodka Premium</option>
+                    <option>Ron Blanco</option>
+                    <option>Ron Dorado</option>
+                    <option>Gin London Dry</option>
+                    <option>Tequila Blanco</option>
+                    <option>Tequila Reposado</option>
+                    <option>Whisky Escocés</option>
+                    <option>Whisky Bourbon</option>
+                    <option>Brandy</option>
+                    <option>Cognac</option>
+                    <option>Vermut Rojo</option>
+                    <option>Vermut Blanco</option>
+                </select>
+            </div>
+            <div class="selector">
+                <label for="bebida">Bebida:</label>
+                <select id="bebida">
+                    <option value="">-- Elegí una --</option>
+                    <option>Jugo de naranja</option>
+                    <option>Jugo de Limon</option>
+                    <option>Agua Tónica</option>
+                    <option>Cola Premium</option>
+                    <option>Soda</option>
+                    <option>Ginger Beer</option>
+                </select>
+            </div>
+            <button class="create-btn" onclick="prepararTrago()">Preparar Trago</button>
+            <p id="resultado-trago" class="resultado"></p>
+        </section>
+    </main>
+</div>
+<script>
+    function prepararTrago() {
+        const licor = document.getElementById('licor').value;
+        const bebida = document.getElementById('bebida').value;
+        const resultado = document.getElementById('resultado-trago');
+
+        if (licor && bebida) {
+            resultado.textContent = `¡Tu trago con ${licor} y ${bebida} está listo! 🍸`;
+        } else {
+            resultado.textContent = 'Por favor elegí un licor y una bebida para preparar tu trago.';
+        }
+    }
+</script>
+</body>
+</html>

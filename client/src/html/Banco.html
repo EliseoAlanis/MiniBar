@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" href="../css/Banco.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Simulado</title>
+    <link rel="stylesheet" href="Banco.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="logo">
+        <h1>Mini<span>Bar</span></h1>
+        <div class="logo-divider"></div>
+    </div>
+    <nav class="main-menu">
+        <ul>
+            <li><a href="Usuario.html"><i class="fas fa-users"></i> <span>Usuario</span></a></li>
+            <li><a href="/Electronica/client/src/html/Cocteles.html"><i class="fa-solid fa-martini-glass"></i> Cócteles</a></li>
+            <li><a href="TragosPersonalizados.html"><i class="fas fa-blender"></i> <span>Tragos Personalizados</span></a></li>
+            <li class="active"><a href="Banco.html"><i class="fas fa-university"></i> <span>Banco</span></a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> <span>Configuración</span></a></li>
+        </ul>
+    </nav>
+    <div class="user-profile">
+        <div class="avatar">
+            <div class="avatar-placeholder">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+        <div class="user-info">
+            <h3>Cliente</h3>
+            <p>Miembro Premium</p>
+        </div>
+    </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="content-header">
+        <h2>Bienvenido a tu Banco</h2>
+        <p class="subtitle">Gestiona tus finanzas con elegancia</p>
+    </div>
+
+    <div class="balance-card">
+        <div class="balance-header">
+            <i class="fas fa-wallet"></i>
+            <h3>Saldo Actual</h3>
+        </div>
+        <div class="balance-amount" id="saldo">$0</div>
+        <div class="balance-description">Disponible para transacciones</div>
+    </div>
+
+    <div class="actions-section">
+        <h3 class="actions-title">Operaciones Bancarias</h3>
+        <div class="button-container">
+            <button class="btn-primary ingresar" onclick="ingresarDinero()">
+                <i class="fas fa-plus"></i>
+                <span>Ingresar Dinero</span>
+            </button>
+            <button class="btn-secondary sacar" onclick="sacarDinero()">
+                <i class="fas fa-minus"></i>
+                <span>Sacar Dinero</span>
+            </button>
+        </div>
+    </div>
+</main>
+
+<script>
+    let saldo = 0;
+
+    function actualizarSaldo() {
+        const saldoElement = document.getElementById("saldo");
+        saldoElement.textContent = `$${saldo.toLocaleString('es-AR')}`;
+
+        // Agregar clase para animación
+        saldoElement.classList.add('balance-update');
+        setTimeout(() => {
+            saldoElement.classList.remove('balance-update');
+        }, 600);
+    }
+
+    function ingresarDinero() {
+        const cantidad = parseFloat(prompt("¿Cuánto dinero deseas ingresar?"));
+        if (!isNaN(cantidad) && cantidad > 0) {
+            saldo += cantidad;
+            actualizarSaldo();
+
+            // Mostrar notificación de éxito
+            mostrarNotificacion(`Se ingresaron $${cantidad.toLocaleString('es-AR')} correctamente`, 'success');
+        } else {
+            mostrarNotificacion("Por favor ingresa una cantidad válida.", 'error');
+        }
+    }
+
+    function sacarDinero() {
+        const cantidad = parseFloat(prompt("¿Cuánto dinero deseas sacar?"));
+        if (!isNaN(cantidad) && cantidad > 0) {
+            if (cantidad <= saldo) {
+                saldo -= cantidad;
+                actualizarSaldo();
+
+                // Mostrar notificación de éxito
+                mostrarNotificacion(`Se retiraron $${cantidad.toLocaleString('es-AR')} correctamente`, 'success');
+            } else {
+                mostrarNotificacion("No tienes suficiente saldo.", 'error');
+            }
+        } else {
+            mostrarNotificacion("Por favor ingresa una cantidad válida.", 'error');
+        }
+    }
+
+    function mostrarNotificacion(mensaje, tipo) {
+        // Crear elemento de notificación
+        const notificacion = document.createElement('div');
+        notificacion.className = `notification ${tipo}`;
+        notificacion.textContent = mensaje;
+
+        // Agregar al body
+        document.body.appendChild(notificacion);
+
+        // Mostrar con animación
+        setTimeout(() => {
+            notificacion.classList.add('show');
+        }, 100);
+
+        // Remover después de 3 segundos
+        setTimeout(() => {
+            notificacion.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(notificacion);
+            }, 300);
+        }, 3000);
+    }
+
+    // Manejar clics en el sidebar
+    document.querySelectorAll('.main-menu a').forEach(item => {
+        item.addEventListener('click', function(e) {
+            // Remover clase active de todos los items
+            document.querySelectorAll('.main-menu li').forEach(i => i.classList.remove('active'));
+            // Agregar clase active al item clickeado
+            this.parentElement.classList.add('active');
+        });
+    });
+
+    // Inicializar
+    actualizarSaldo();
+</script>
+</body>
+</html>
